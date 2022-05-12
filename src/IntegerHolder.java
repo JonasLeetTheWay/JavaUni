@@ -1,6 +1,3 @@
-package nigga;
-
-
 public class IntegerHolder {
 
     static int commonValue = 1;  // class-level
