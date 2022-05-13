@@ -5,9 +5,6 @@ public class MyComplexNumber {
     private double real;
     private double imag;
 
-    private static double real_temp;
-    private static double imag_temp;
-
     public MyComplexNumber(double real, double imag) {
         this.real = real;
         this.imag = imag;
@@ -27,9 +24,8 @@ public class MyComplexNumber {
     }
 
     public MyComplexNumber add(MyComplexNumber c) {
-        real_temp = real + c.real;
-        imag_temp = imag + c.imag;
-        return new MyComplexNumber(real_temp, imag_temp);
+
+        return new MyComplexNumber(real + c.getReal(), imag + c.getImag());
     }
 
     // minus
@@ -37,9 +33,7 @@ public class MyComplexNumber {
         /** Order mathers
          * c1 - c2
          */
-        real_temp = real - c.real;
-        imag_temp = imag - c.imag;
-        return new MyComplexNumber(real_temp, imag_temp);
+        return new MyComplexNumber(real - c.getReal(), imag - c.getImag());
     }
 
     // product
@@ -51,10 +45,7 @@ public class MyComplexNumber {
         // a, c = real
         // b, d = imag
 
-        real_temp = real * c.real - imag * c.imag;
-        imag_temp = real * c.imag + imag * c.real;
-
-        return new MyComplexNumber(real_temp, imag_temp);
+        return new MyComplexNumber(real * c.getReal() - imag * c.getImag(), real * c.getImag() + imag * c.getReal());
     }
 
     // divide
@@ -70,17 +61,9 @@ public class MyComplexNumber {
         // a, c = real
         // b, d = imag
 
-        double denominator = Math.pow(c.real, 2) + Math.pow(c.imag, 2);
+        double denominator = Math.pow(c.getReal(), 2) + Math.pow(c.getImag(), 2);
 
-        real_temp = (real * c.real + imag * c.imag) / denominator;
-        imag_temp = (imag * c.real - real * c.imag) / denominator;
-
-        return new MyComplexNumber(real_temp, imag_temp);
+        return new MyComplexNumber((real * c.getReal() + imag * c.getImag()) / denominator, (imag * c.getReal() - real * c.getImag()) / denominator);
     }
 
-    // print
-    @Override
-    public String toString() {
-        return new StringBuilder("(").append(real).append(",").append(imag).append(")").toString();
-    }
 }

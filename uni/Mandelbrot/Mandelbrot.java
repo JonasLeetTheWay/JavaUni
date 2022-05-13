@@ -38,6 +38,8 @@ public class Mandelbrot{
 				w.setPixel(x,y,(int)(255.0*n/n_iter));
 			}
 		}
+
+
 		System.out.println("Fertig!");
 	}
 }
