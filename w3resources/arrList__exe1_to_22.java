@@ -12,13 +12,16 @@ public class arrList__exe1_to_22 {
 
         ArrayList<String> list1 = objects2ArrayList("Red","Green","Black","White","Pink") ;
         ArrayList<String> list2 = (ArrayList<String>) list1.clone();
+        ArrayList<String> list3 = objects2ArrayList("Red","Green") ;
+
         replaceStringsAtIndex(list2,3,"");
         System.out.println(list1);
         System.out.println(list2);
         System.out.println(compareTwoStringLists(list1,list2));
         System.out.println(swapStringInStringList(list1, "Red","Black"));
 
-        System.out.println(extendElementsinArrayList(list1,"White","Pink","Yellow","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White","White"));
+        System.out.println(replaceStringsAtIndex(list3,1,"White"));
+        System.out.println(replaceStringsAtIndex(arr_list,10,"White"));
 
     }
 
@@ -183,24 +186,26 @@ public class arrList__exe1_to_22 {
         return res_array;
     }
 
-    public static ArrayList<String> replaceStringsAtIndex(ArrayList<String> arr_list, int position, String... objects) {
+    public static ArrayList<String> replaceStringsAtIndex(ArrayList<String> arr_list, int index, String... objects) {
         ArrayList<String> res = new ArrayList<>();
         for (int i = 0; i < arr_list.size(); i++) {
-            if (i == position) {
-                arr_list.remove(position);
+            if (i == index) {
+                arr_list.remove(index);
+                res.add(arr_list.get(i-1));
                 for (String obj : objects) {
                     res.add(obj);
                 }
+
             }
-            res.add(arr_list.get(i));
+
         }
         return res;
     }
 
-    public static List<String> insertStringsAtIndex(List<String> arr_list, int position, String... objects) {
+    public static List<String> insertStringsAtIndex(List<String> arr_list, int index, String... objects) {
         List<String> res = new ArrayList<>();
         for (int i = 0; i < arr_list.size(); i++) {
-            if (i == position) {
+            if (i == index) {
                 for (String obj : objects) {
                     res.add(obj);
                 }
