@@ -3,7 +3,6 @@ import Prog1Tools.IOTools;
 public class InverterRecursive {
 
     static int count = 0;
-    static boolean flag = true;
 
     public static void main(String[] args) {
 
@@ -14,21 +13,23 @@ public class InverterRecursive {
         str.append("Please input characters");
         System.out.println(str.toString());
 
-        inverterRecursive(flag);
-
+        inverterRecursive();
+        System.out.println();
         System.out.printf("The recursive method has been called %d times.", count);
+
     }
 
-    public static boolean inverterRecursive(boolean flag) {
-        if (flag) {
-            System.out.printf("%d.Character: ", count + 1);
-            char c = IOTools.readChar();
-            count++;
-            if (c == 'x' || c == 'X') {
-                flag = false;
-            }
-            inverterRecursive(flag);
+    public static void inverterRecursive() {
+        System.out.printf("%d.Character: ", count + 1);
+        char c = IOTools.readChar();
+        count++;
+        if (c == 'x' || c == 'X') {
+            System.out.print("The inverted order is: ");
+        } else {
+            inverterRecursive();
         }
-        return flag;
+        // basically add every new element to the end of recursive "stack"
+        // can be seen as "stack" dataclass
+        System.out.print(c);
     }
 }

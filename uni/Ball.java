@@ -8,7 +8,7 @@ public class Ball {
     static final int MAX_ROW = 24;
     static final int MAX_COLUMN = 79;
 
-    public static int numberOfStepsToTake = 175;
+    public static int numberOfStepsToTake = 170;
     public static int step = 0;
 
     private int row = 0;
@@ -17,33 +17,41 @@ public class Ball {
     public boolean columnDescending = true;  // boolean FALSE = going up / left
 
     public Ball(int row, int column) {
-        this.row = row;
-        this.column = column;
+        setRow(row);
+        setColumn(column);
+    }
+    public Ball(){
     }
 
     public static void main(String[] args) {
         TextScreen screen = TextScreen.getInstance();
 
-        Ball ball1 = new Ball(0, 0);
-        Ball ball2 = new Ball(0, MAX_COLUMN);
-        Ball ball3 = new Ball(MAX_ROW, 0);
-        Ball ball4 = new Ball(MAX_ROW, MAX_COLUMN);
+        // num of balls
+        int n = 4;
+        Ball[] balls = new Ball[n];      // inside is all null actually
+        // give each ball coordinates
+        int[][] posArr = {
+                            {0,0},
+                            {0, MAX_COLUMN},
+                            {MAX_ROW, 0},
+                            {MAX_ROW, MAX_COLUMN}
+        };
+        // create balls
+        for (int i=0; i<balls.length; i++){
+            balls[i] = new Ball();
+            balls[i].setRow(posArr[i][0]);
+            balls[i].setColumn(posArr[i][1]);
+        }
 
         for (step = 1; step <= numberOfStepsToTake; step++) {
             //track timesteps into floating window title
             screen.setTitle("JumpingBalls on step "+step);
-
             //simulating game physics of each ball
-            ball1.calculateNewPosition();
-            ball2.calculateNewPosition();
-            ball3.calculateNewPosition();
-            ball4.calculateNewPosition();
-
-            //printing the current position
-            screen.write(ball1.row, ball1.column, BALL);
-            screen.write(ball2.row, ball2.column, BALL);
-            screen.write(ball3.row, ball3.column, BALL);
-            screen.write(ball4.row, ball4.column, BALL);
+            for(Ball b : balls){
+                //printing the current position
+                b.calculateNewPosition();
+                screen.write(b.getRow(),b.getColumn(),BALL);
+            }
             //pausing the screen for humans
             Screen.pause(PAUSE_TIME);
         }
@@ -52,23 +60,18 @@ public class Ball {
 
     public void calculateNewPosition() {
         //Checking for direction change
-        rowDescending = directionRow(row, rowDescending);
-        columnDescending = directionColumn(column, columnDescending);
+        rowDescending = directionRow(getRow(), rowDescending);
+        columnDescending = directionColumn(getColumn(), columnDescending);
         //updating row and column
-        row = rowChange(row, rowDescending);
-        column = columnChange(column, columnDescending);
+        setRow( rowChange(getRow(), rowDescending) );
+        setColumn( columnChange(getColumn(), columnDescending) );
     }
 
     public void setRow(int y) {
-        IndexOutOfBoundsException error = new IndexOutOfBoundsException();
-        if (y == 0 || y == 24) throw error;
-
         row = y;
     }
 
     public void setColumn(int x) {
-        IndexOutOfBoundsException error = new IndexOutOfBoundsException();
-        if (x == 0 || x == 79) throw error;
         column = x;
     }
 
@@ -89,7 +92,7 @@ public class Ball {
      * @param currentDirection
      * @return
      */
-    public static boolean directionRow(int row, boolean currentDirection) {
+    public boolean directionRow(int row, boolean currentDirection) {
         if (row == 0) {
             return true;
         } else if (row == MAX_ROW) {
@@ -107,7 +110,7 @@ public class Ball {
      * @param currentDirection
      * @return
      */
-    public static boolean directionColumn(int column, boolean currentDirection) {
+    public boolean directionColumn(int column, boolean currentDirection) {
         if (column == 0) {
             return true;
         } else if (column == MAX_COLUMN) {
@@ -124,7 +127,7 @@ public class Ball {
      * @param descending
      * @return
      */
-    public static int rowChange(int row, boolean descending) {
+    public int rowChange(int row, boolean descending) {
         if (descending) {
             row++;
         } else {
@@ -141,7 +144,7 @@ public class Ball {
      * @param descending
      * @return
      */
-    public static int columnChange(int column, boolean descending) {
+    public int columnChange(int column, boolean descending) {
         if (descending) {
             column++;
         } else {

@@ -1,5 +1,3 @@
-package AdressbuchTemplatesAndTests;
-
 /**
  * class has the main-Method in it
  * @author Larissa

@@ -1,5 +1,3 @@
-package Mandelbrot;
-
 public class Mandelbrot{
 	public Mandelbrot(boolean test){
 		if(!test){

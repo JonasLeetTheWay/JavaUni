@@ -10,7 +10,7 @@ public class StringTree {
 
     public void insert(String str) {
 
-        if (savedValue.compareTo(str) < 0) {
+        if (savedValue.compareTo(str) > 0) {
 
             if (leftChild == null) {
                 leftChild = new StringTree(str);

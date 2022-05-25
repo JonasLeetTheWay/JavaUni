@@ -1,5 +1,3 @@
-package Mandelbrot;
-
 public class MyComplexNumber {
 
     private double real;
@@ -49,7 +47,6 @@ public class MyComplexNumber {
     }
 
     // divide
-    // product
     public MyComplexNumber divide(MyComplexNumber c) {
         /** Order mathers
          * c1 / c2

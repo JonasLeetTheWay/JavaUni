@@ -5,23 +5,27 @@ import java.util.List;
 public class arrList__exe1_to_22 {
 
     public static void main(String[] args) {
-        ArrayList<String> arr_list = objects2ArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
+//        ArrayList<String> arr_list = objects2ArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
+//
+//        List<List<String>> a = extractPortionInStringList(arr_list, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"); // only can handle duplicates found 2 times, if 3 times, there will be bug
+//        System.out.println(a);
+//
+//        ArrayList<String> list1 = objects2ArrayList("Red","Green","Black","White","Pink") ;
+//        ArrayList<String> list2 = (ArrayList<String>) list1.clone();
+//        ArrayList<String> list3 = objects2ArrayList("Red","Green") ;
+//
+//        replaceStringsAtIndex(list2,3,"");
+//        System.out.println(list1);
+//        System.out.println(list2);
+//        System.out.println(compareTwoStringLists(list1,list2));
+//        System.out.println(swapStringInStringList(list1, "Red","Black"));
+//
+//        System.out.println(replaceStringsAtIndex(list3,1,"White"));
+//        System.out.println(replaceStringsAtIndex(arr_list,10,"White"));
 
-        List<List<String>> a = extractPortionInStringList(arr_list, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"); // only can handle duplicates found 2 times, if 3 times, there will be bug
-        System.out.println(a);
-
-        ArrayList<String> list1 = objects2ArrayList("Red","Green","Black","White","Pink") ;
-        ArrayList<String> list2 = (ArrayList<String>) list1.clone();
-        ArrayList<String> list3 = objects2ArrayList("Red","Green") ;
-
-        replaceStringsAtIndex(list2,3,"");
-        System.out.println(list1);
-        System.out.println(list2);
-        System.out.println(compareTwoStringLists(list1,list2));
-        System.out.println(swapStringInStringList(list1, "Red","Black"));
-
-        System.out.println(replaceStringsAtIndex(list3,1,"White"));
-        System.out.println(replaceStringsAtIndex(arr_list,10,"White"));
+        int a,b,c;
+        a=b=c=0;
+        System.out.printf("a %d b %d c %d",a,b,c);
 
     }
 

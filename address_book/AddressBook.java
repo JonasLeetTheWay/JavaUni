@@ -1,5 +1,3 @@
-package AdressbuchTemplatesAndTests;
-
 /**
  * Addressbook which holds the entries
  *

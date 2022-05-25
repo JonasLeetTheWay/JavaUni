@@ -1,5 +1,3 @@
-package AdressbuchTemplatesAndTests;
-
 /**
  * models a Friend with name, age and address
  *
